@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { fetchUsers } from "../../actions";
 import './index.css';
 
 class Button extends Component {
-  showTable = () => {
-
+  onButtonClick = () => {
+    this.props.dispatch(fetchUsers());
   };
 
   render() {
     return (
-      <button onClick={this.showTable} className='button'>Show user's list</button>
+      <button onClick={this.onButtonClick} className='button'>Show user's list</button>
     );
   }
 }
 
-export default Button;
+export default connect()(Button);

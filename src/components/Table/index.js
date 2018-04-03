@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchUsers } from "../../actions";
 import './index.css';
 
 class Table extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchUsers());
-  }
-
   render() {
     const { error, loading, users = [] } = this.props;
 
@@ -21,23 +16,25 @@ class Table extends Component {
 
     return (
       <table className='table'>
-        <tr>
-          <th className='table-cell'>Name</th>
-          <th className='table-cell'>Email</th>
-          <th className='table-cell'>Address</th>
-        </tr>
-        {users.map(user =>
-          <tr key={user.id}>
-            <td className='table-cell'>{user.name}</td>
-            <td className='table-cell'>{user.email}</td>
-            <td className='table-cell'>
-              {user.address['street']},
-              {user.address['suite']},
-              {user.address['city']},
-              {user.address['zipcode']}
-            </td>
+        <tbody>
+          <tr>
+            <th className='table-cell'>Name</th>
+            <th className='table-cell'>Email</th>
+            <th className='table-cell'>Address</th>
           </tr>
-        )}
+          {users.map(user =>
+            <tr key={user.id}>
+              <td className='table-cell'>{user.name}</td>
+              <td className='table-cell'>{user.email}</td>
+              <td className='table-cell'>
+                {user.address['street']},
+                {user.address['suite']},
+                {user.address['city']},
+                {user.address['zipcode']}
+              </td>
+            </tr>
+          )}
+        </tbody>
       </table>
     );
   }
