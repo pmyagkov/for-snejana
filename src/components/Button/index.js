@@ -10,7 +10,7 @@ class Button extends Component {
 
   render() {
     return (
-      <button onClick={this.onButtonClick} className='button'>Show user's list</button>
+      <button onClick={ this.onButtonClick } className='button'>Show users' list</button>
     );
   }
 }
