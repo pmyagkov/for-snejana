@@ -27,30 +27,34 @@ class Table extends Component {
     }
 
     return (
-      <table className='table'>
-        <tbody>
-          <tr>
-            <th onClick={ () => this.onSort('name') }
-                className='table__cell-heading table__cell_sortable'>
-                Name
-            </th>
-            <th className='table__cell-heading'>Email</th>
-            <th className='table__cell-heading'>Address</th>
-          </tr>
-          {users.map(user =>
-            <tr key={ user.id }>
-              <td className='table__cell'>{ user.name }</td>
-              <td className='table__cell'>{ user.email }</td>
-              <td className='table__cell'>
-                { user.address['street'] },
-                { user.address['suite'] },
-                { user.address['city'] },
-                { user.address['zipcode'] }
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <div>
+        {users.length > 0 &&
+          <table className='table'>
+            <tbody>
+              <tr>
+                <th onClick={ () => this.onSort('name') }
+                    className='table__cell-heading table__cell_sortable'>
+                    Name
+                </th>
+                <th className='table__cell-heading'>Email</th>
+                <th className='table__cell-heading'>Address</th>
+              </tr>
+              {users.map(user =>
+                <tr key={ user.id }>
+                  <td className='table__cell'>{ user.name }</td>
+                  <td className='table__cell'>{ user.email }</td>
+                  <td className='table__cell'>
+                    { user.address['street'] },
+                    { user.address['suite'] },
+                    { user.address['city'] },
+                    { user.address['zipcode'] }
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        }
+      </div>
     );
   }
 }
